@@ -1,0 +1,83 @@
+<h2 mat-dialog-title>
+  {{ title }}
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Item Name</mat-label>
+      <input matInput formControlName="name">
+      @if (itemForm.get('name')?.hasError('required')) {
+        <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Item Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      @if (itemForm.get('description')?.hasError('required')) {
+        <mat-error>Description is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input
+        matInput
+        type="number"
+        class="example-right-align"
+        placeholder="0"
+        formControlName="price"
+      >
+      <span matTextPrefix>$&nbsp;</span>
+      <span matTextSuffix>.00</span>
+      @if (itemForm.get('price')?.hasError('required')) {
+        <mat-error>Price is required</mat-error>
+      }
+      @if (itemForm.get('price')?.hasError('min')) {
+        <mat-error>Price must be greater than 0</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Stock</mat-label>
+      <input
+        matInput
+        type="number"
+        class="example-right-align"
+        placeholder="0"
+        formControlName="quantity"
+      >
+      @if (itemForm.get('quantity')?.hasError('required')) {
+        <mat-error>Stock is required</mat-error>
+      }
+      @if (itemForm.get('quantity')?.hasError('min')) {
+        <mat-error>Stock must be at least 1</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Supplier</mat-label>
+      <mat-select formControlName="supplierId">
+        @for (supplier of suppliers; track supplier) {
+          <mat-option [value]="supplier.id">{{ supplier.name }}</mat-option>
+        }
+      </mat-select>
+      @if (itemForm.get('supplierId')?.hasError('required')) {
+        <mat-error>Supplier is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button
+        mat-button
+        cdkFocusInitial
+        color="primary"
+        type="submit"
+      >
+        {{ isEditMode ? 'Save' : 'Add' }}
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

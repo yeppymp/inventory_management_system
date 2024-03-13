@@ -1,0 +1,42 @@
+$primary: #76ABAE;
+$warning: #ef6f2e;
+
+.mat-expansion-panel:not(:first-child) {
+  margin-top: 1rem;
+}
+.mat-expansion-panel-header {
+  height: 75px;
+}
+.mat-expansion-content {
+  padding-top: 24px;
+}
+
+.color-primary {
+  color: $primary;
+}
+.color-warning {
+  color: $warning;
+}
+
+.ims-sales-report {
+  margin-top: 1rem;
+  color: black;
+
+  &-cards {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+
+    mat-card {
+      width: 100%;
+      color: black;
+      
+      &-header {
+        justify-content: center;
+      }
+      &-content {
+        text-align: center;
+      }
+    }
+  }
+}

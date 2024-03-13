@@ -1,0 +1,33 @@
+<h3>Settings</h3>
+
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="settingForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline">
+        <mat-label>Stock Warning</mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          placeholder="0"
+          formControlName="stockWarning"
+        >
+        @if (settingForm.get('stockWarning')?.hasError('required')) {
+          <mat-error>Remaining Stock is required</mat-error>
+        }
+        @if (settingForm.get('stockWarning')?.hasError('min')) {
+          <mat-error>Remaining Stock must be at least 1</mat-error>
+        }
+      </mat-form-field>
+    
+      <button
+        mat-raised-button
+        cdkFocusInitial
+        color="primary"
+        type="submit"
+      >
+        Save
+      </button>
+    </form>
+  </mat-card-content>
+</mat-card>

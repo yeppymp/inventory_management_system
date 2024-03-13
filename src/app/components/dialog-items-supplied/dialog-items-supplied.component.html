@@ -1,0 +1,13 @@
+<mat-dialog-content class="mat-typography">
+  <h4><strong>{{ title }}</strong></h4>
+
+  <ol>
+    @for (item of itemsSupplied; track item) {
+      <li>{{ item.name }}</li>
+    }
+  </ol>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

@@ -1,0 +1,25 @@
+$dark: #222831;
+$primary: #76ABAE;
+
+.ims-login {
+  background-color: $dark;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+
+  h4 {
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+
+  .mat-mdc-raised-button.mat-primary {
+    width: 100%;
+    height: 56px;
+    background-color: $primary !important;
+  }
+}

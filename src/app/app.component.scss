@@ -1,0 +1,98 @@
+$dark: #222831;
+$light-dark: #31363F;
+$primary: #76ABAE;
+$light: #EEEEEE;
+$light-alpha: rgba(238, 238, 238, 0.25);
+
+mat-icon {
+  font-size: 1.5rem;
+}
+mat-toolbar {
+  padding: 0;
+  background-color: $dark;
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+}
+mat-divider {
+  margin: 1.5rem 0;
+  border-color: $light-alpha;
+}
+
+.ims-main {
+  max-width: 480px;
+  margin: 0 auto;
+  min-height: 100vh;
+  color: white;
+
+  .ims-drawer {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+
+    &-content {
+      background-color: $dark;
+      color: white;
+    }
+  }
+  .ims-drawer-side {
+    background-color: $primary;
+    width: 85%;
+    padding: 1rem;
+    border: none;
+    color: white;
+
+    h3 {
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+
+    .ims-menu {
+      margin-left: -1rem;
+
+      &-item {
+        a {
+          text-decoration: none;
+          color: white;
+        }
+      }
+      &-icon {
+        color: rgba(238, 238, 238, 0.75) !important;
+        margin-right: 1rem;
+      }
+    }
+
+    &-footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.875rem;
+    }
+  }
+  .ims-drawer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ims-toolbar {
+    padding: 1rem 0.5rem;
+
+    mat-icon {
+      scale: 1.5;
+    }
+    &-title {
+      font-size: 1.25rem;
+      margin-left: 0.5rem;
+    }
+  }
+
+  .ims-content {
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

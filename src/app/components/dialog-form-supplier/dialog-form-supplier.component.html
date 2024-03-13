@@ -1,0 +1,47 @@
+<h2 mat-dialog-title>
+  {{ title }}
+</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="supplierForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Supplier Name</mat-label>
+      <input matInput formControlName="name">
+      @if (supplierForm.get('name')?.hasError('required')) {
+        <mat-error>Name is required</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Contact</mat-label>
+      <input matInput formControlName="contact">
+      @if (supplierForm.get('contact')?.hasError('required')) {
+        <mat-error>Contact is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Items Supplied</mat-label>
+      <mat-select formControlName="itemsSupplied" multiple>
+        @for (inventory of inventories; track inventory) {
+          <mat-option [value]="inventory.id">{{ inventory.name }}</mat-option>
+        }
+      </mat-select>
+      @if (supplierForm.get('itemsSupplied')?.hasError('required')) {
+        <mat-error>Items is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button
+        mat-button
+        cdkFocusInitial
+        color="primary"
+        type="submit"
+      >
+        {{ isEditMode ? 'Save' : 'Add' }}
+      </button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

@@ -1,0 +1,30 @@
+<div class="ims-login">
+  <h4>Inventory Management System</h4>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput formControlName="username">
+      @if (loginForm.get('username')?.hasError('required')) {
+        <mat-error>Username is required</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password">
+      @if (loginForm.get('password')?.hasError('required')) {
+        <mat-error>Password is required</mat-error>
+      }
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      cdkFocusInitial
+      color="primary"
+      type="submit"
+    >
+      LOGIN
+    </button>
+  </form>
+</div>

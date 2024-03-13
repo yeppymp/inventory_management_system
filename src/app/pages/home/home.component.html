@@ -1,0 +1,96 @@
+@for (item of stocksItem; track item) {
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title class="color-warning">
+        Out of Stock!
+      </mat-panel-title>
+      <mat-panel-description>
+        {{ item.name }} is almost out of stock.
+        <mat-icon>recent_actors</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  
+    <div class="mat-expansion-content mat-typography">
+      <h4>
+        Item <strong>{{ item.name }} has {{ item.quantity }}</strong> stocks remaining.
+      </h4>
+      <p><em>Contact supplier:</em></p>
+      <p>
+        {{ getSupplier(item.supplierId)?.name }}
+        - {{ getSupplier(item.supplierId)?.contact }}
+      </p>
+    </div>
+  </mat-expansion-panel>
+}
+
+<div class="ims-sales-report-cards">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="color-primary">
+        {{ totalSold() }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Items Sold</p>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title class="color-primary">
+        ${{ totalRevenue() }}
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Total Revenue</p>
+    </mat-card-content>
+  </mat-card>    
+</div>
+
+<mat-card class="ims-sales-report">
+  <mat-card-header>
+    <mat-card-title>Sales Report</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <table
+      mat-table
+      [dataSource]="sales"
+    >
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let i = index;">{{ i + 1 }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="item">
+        <th mat-header-cell *matHeaderCellDef>Item</th>
+        <td mat-cell *matCellDef="let element">
+          <strong>{{ getItem(element.itemId)?.name }}</strong>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.transactionDate }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef>Qty</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.qty }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef>Total</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.total }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedSalesColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedSalesColumns;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
