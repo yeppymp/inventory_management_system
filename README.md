@@ -10,11 +10,11 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Admin:\
 username: `admin`\
-password: `admin`\
+password: `admin`
 
 Staff:\
 username: `staff`\
-password: `staff`\
+password: `staff`
 
 ## Code scaffolding
 
