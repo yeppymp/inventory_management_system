@@ -8,13 +8,13 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 ## Login Account
 
-Admin:
-username: admin
-password: admin
+Admin:\
+username: `admin`\
+password: `admin`\
 
-Staff:
-username: staff
-password: staff
+Staff:\
+username: `staff`\
+password: `staff`\
 
 ## Code scaffolding
 
